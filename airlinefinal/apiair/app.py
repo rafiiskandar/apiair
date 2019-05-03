@@ -34,12 +34,11 @@ product_schema = ProductSchema(strict=True)
 products_schema = ProductSchema(many=True, strict=True)
 
 # Create a Product
-@app.route('/')
 @app.route('/product', methods=['POST'])
 def add_product():
     name = request.json['name']
     image_file = request.json['image_file']
- 
+
     new_product = Product(name, image_file)
 
     db.session.add(new_product)
